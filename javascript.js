@@ -48,3 +48,4 @@ for (let i = 0; i <= like.length; i++) {
     prix[i].innerHTML = 0;
   };
 }
+
