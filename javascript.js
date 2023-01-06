@@ -5,12 +5,11 @@ let moins = document.getElementsByClassName("minus-btn");
 let prix = document.getElementsByClassName("price");
 let efface = document.getElementsByClassName("delete");
 let sommefinale = document.getElementById("finalPrice");
-
+let itemdel = document.getElementsByClassName("Item");
 let sommef = 2055;
 const array = [];
 
 for (let i = 0; i <= like.length; i++) {
-  
   // Like
   like[i].style.color = "black";
   like[i].onclick = function () {
@@ -25,7 +24,9 @@ for (let i = 0; i <= like.length; i++) {
   array[i] = prix[i].textContent;
   plus[i].onclick = function () {
     quant[i].value = Number(quant[i].value) + 1;
-    prix[i].innerHTML = (parseFloat(array[i]) * Number(quant[i].value)).toFixed(2);
+    prix[i].innerHTML = (parseFloat(array[i]) * Number(quant[i].value)).toFixed(
+      2
+    );
     sommef += parseFloat(array[i]);
     sommefinale.value = sommef.toFixed(2);
   };
@@ -34,7 +35,9 @@ for (let i = 0; i <= like.length; i++) {
   moins[i].onclick = function () {
     if (quant[i].value > 0) {
       quant[i].value = Number(quant[i].value) - 1;
-      prix[i].innerHTML = (parseFloat(array[i]) * Number(quant[i].value)).toFixed(2);
+      prix[i].innerHTML = (
+        parseFloat(array[i]) * Number(quant[i].value)
+      ).toFixed(2);
       sommef -= parseFloat(array[i]);
       sommefinale.value = sommef.toFixed(2);
     }
@@ -44,8 +47,6 @@ for (let i = 0; i <= like.length; i++) {
   efface[i].onclick = function () {
     sommef -= parseFloat(prix[i].textContent);
     sommefinale.value = sommef.toFixed(2);
-    quant[i].value = 0;
-    prix[i].innerHTML = 0;
+    itemdel[i].style.display = "none";
   };
 }
-
